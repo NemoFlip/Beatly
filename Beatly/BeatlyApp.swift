@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct BeatlyApp: App {
+    @State private var showLaunchView = true
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                ContentView()
+                ZStack {
+                    if showLaunchView {
+                        LaunchView(showLaunchView: $showLaunchView )
+                            .transition(.move(edge: .leading))
+                    }
+                }.zIndex(2.0)
+               
+            }
+            
         }
     }
 }
